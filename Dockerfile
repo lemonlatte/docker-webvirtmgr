@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Jim Yeh <lemonlatte@gmail.com>
 
 RUN apt-get -y update
-RUN apt-get -y install git python-pip python-libvirt python-libxml2 novnc supervisor nginx 
+RUN apt-get -y install git python-pip python-libvirt python-libxml2 supervisor nginx 
 
 RUN git clone https://github.com/retspen/webvirtmgr
 WORKDIR /webvirtmgr
@@ -22,6 +22,7 @@ RUN chown www-data:www-data -R /var/local/webvirtmgr
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN ln -s /etc/nginx/sites-available/webvirtmgr /etc/nginx/sites-enabled
+RUN apt-get -ys clean
 
 WORKDIR /
 VOLUME /var/local/webvirtmgr
