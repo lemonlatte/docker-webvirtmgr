@@ -22,6 +22,7 @@ RUN chown www-data:www-data -R /var/local/webvirtmgr
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN ln -s /etc/nginx/sites-available/webvirtmgr /etc/nginx/sites-enabled
+RUN ln -s /var/local/webvirtmgr /var/www
 RUN apt-get -ys clean
 
 WORKDIR /
